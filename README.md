@@ -54,3 +54,23 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+# Features
+
+## List All Best Sellers:
+
+At the beginning, the page already pre-loads the product data and stores it in a LocalStorage so as not to exceed the API request limit.
+
+![List Books](/image-list-book.png)
+
+## Filter Specific Book by title:
+
+In the field at the beginning of the screen it is possible to search the list of products to return a specific book.
+
+![List Books](/image-book.png)
+
+## View Books Details.
+
+In the api I didn't find an endpoint that would return the details of the book individually, for that reason I ended up not implementing the specific product page.
+
+In some cases the api returned incorrect data or no results, for example, for ISBN there are N properties in the object like ISBN10, ISBN13, etc. This made it difficult to understand which field was actually the key.
