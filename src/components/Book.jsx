@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import {
   Box,
   Button,
@@ -18,6 +20,13 @@ export const Book = ({
   title,
   publisher,
 }) => {
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    const slugify = title.toLowerCase().split(' ').join('-');
+    router.replace(`/book/${slugify}`);
+  };
+
   return (
     <Card variant="filled">
       <Flex gap="12px" padding="8px" alignItems="center">
@@ -54,6 +63,7 @@ export const Book = ({
               rightIcon={<ArrowForwardIcon />}
               colorScheme="teal"
               variant="outline"
+              onClick={handleRedirect}
             >
               View more
             </Button>
