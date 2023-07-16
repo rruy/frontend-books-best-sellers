@@ -13,8 +13,6 @@ function BestSellersList() {
     });
   }, []);
 
-  console.log('booksList', booksList);
-
   return (
     <Box mt="16px">
       <SimpleGrid spacing={4} templateColumns="repeat(1, minmax(200px, 1fr))">
