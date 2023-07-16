@@ -1,44 +1,34 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-import {
-  Button,
-  Container,
-  Divider,
-  Heading,
-  Input,
-  InputGroup,
-  InputRightElement,
-} from '@chakra-ui/react';
+import { Container, Divider, Heading } from '@chakra-ui/react';
+import { getBestSellers } from '@/services/best-sellers';
 
-import { BestSellersList } from '@/features/best-sellers';
+import { BestSellersList, BestSellersFilter } from '@/features/best-sellers';
 
 function BestSellersPage() {
-  const inputRef = useRef(null);
+  const [booksList, setBooksList] = useState([]);
+  const [pureList, setPureList] = useState([]);
 
-  const handleFilterBooks = () => {
-    console.log('filter book:', inputRef.current.value);
-  };
+  useEffect(() => {
+    getBestSellers().then((data) => {
+      setBooksList(data.results);
+      setPureList(data.results);
+    });
+  }, []);
 
   return (
     <Container maxW="1200px" color="#262626" paddingY="50px">
       <Heading as="h1" marginBottom="16px">
         Best Sellers Page
       </Heading>
-      <InputGroup size="md">
-        <Input
-          pr="4.5rem"
-          type="text"
-          placeholder="Type something"
-          ref={inputRef}
-        />
-        <InputRightElement width="4.5rem">
-          <Button h="1.75rem" size="sm" onClick={handleFilterBooks}>
-            Find
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+
+      <BestSellersFilter
+        booksList={booksList}
+        pureList={pureList}
+        setBooksList={setBooksList}
+      />
       <Divider marginY="22px" />
-      <BestSellersList />
+      <BestSellersList booksList={booksList} />
     </Container>
   );
 }

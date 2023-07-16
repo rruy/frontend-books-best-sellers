@@ -1,24 +1,24 @@
 import {
-    Box,
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    Flex,
-    Heading,
-    Text,
-    CardFooter,
-  } from '@chakra-ui/react';
-  import { ArrowForwardIcon } from '@chakra-ui/icons';
-  
-  export const Book = ({
-    title = 'Book',
-    description = 'View a summary of all your customers over the last month.',
-    author = 'Author',
-    contributor = 'Contributor',
-    publisher = 'Publisher',
-    viewMoreAction,
-  }) => (
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  Flex,
+  Heading,
+  Text,
+  CardFooter,
+} from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+
+export const Book = ({
+  author,
+  contributor,
+  description,
+  title,
+  publisher,
+}) => {
+  return (
     <Card variant="filled">
       <Flex gap="12px" padding="8px" alignItems="center">
         <Box
@@ -62,3 +62,4 @@ import {
       </Flex>
     </Card>
   );
+};
