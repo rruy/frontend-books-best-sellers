@@ -1,0 +1,1 @@
+export { BestSellersEmpty } from './BestSellersEmpty';
